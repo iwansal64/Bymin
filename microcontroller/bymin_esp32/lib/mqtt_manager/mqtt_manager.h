@@ -8,7 +8,7 @@
 #define SSID "Iwann"
 #define PASSWORD "1235813213455"
 #define MQTT_SERVER_URI "0.tcp.ap.ngrok.io"
-#define MQTT_SERVER_PORT 13755
+#define MQTT_SERVER_PORT 18671
 
 #define MAX_RECURSIVE 10
 
@@ -53,11 +53,11 @@ void MqttManager::setup()
     while (WiFi.status() != WL_CONNECTED)
     {
         delay(500);
-        // this->mqtt_display_manager.show_connecting_state(false, SSID, dot);
+        this->mqtt_display_manager.show_connecting_state(false, SSID, dot);
         dot += 1;
-        Serial.print("-");
+        Serial.print(". ");
     }
-    // this->mqtt_display_manager.show_connecting_state(true, SSID);
+    this->mqtt_display_manager.show_connecting_state(true, SSID);
 
     Serial.println("");
     Serial.println("WiFi connected");

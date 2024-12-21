@@ -97,3 +97,8 @@ bool HRSensorManager::ready_to_read()
     }
     return true;
 }
+
+bool HRSensorManager::exist_finger()
+{
+    return this->currentIr > 5000;
+}

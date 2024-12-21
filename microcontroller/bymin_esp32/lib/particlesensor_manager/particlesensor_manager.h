@@ -50,7 +50,7 @@ void ParticleSensorManager::setup()
 
     byte ledBrightness = 60; // Options: 0=Off to 255=50mA
     byte sampleAverage = 4;  // Options: 1, 2, 4, 8, 16, 32
-    byte ledMode = 3;        // Options: 1 = Red only, 2 = Red + IR, 3 = Red + IR + Green
+    byte ledMode = 2;        // Options: 1 = Red only, 2 = Red + IR, 3 = Red + IR + Green
     byte sampleRate = 100;   // Options: 50, 100, 200, 400, 800, 1000, 1600, 3200
     int pulseWidth = 411;    // Options: 69, 118, 215, 411
     int adcRange = 4096;     // Options: 2048, 4096, 8192, 16384
@@ -62,7 +62,7 @@ void ParticleSensorManager::setup()
 
 bool ParticleSensorManager::exist_finger()
 {
-    return this->currentIr >= 50000;
+    return this->hrsensorManager.exist_finger();
 }
 
 void ParticleSensorManager::show_finger_state()
@@ -72,7 +72,7 @@ void ParticleSensorManager::show_finger_state()
     //? If current finger state is not same as the new state
     if (exist_finger != currentFingerState)
     {
-        // Serial.println(currentFingerState ? "Fingerprint Exited" : "Fingerprint Detected");
+        Serial.println(currentFingerState ? "Fingerprint Exited" : "Fingerprint Detected");
         this->hrdisplayManager.show_fingerprint_state(exist_finger);
         this->currentFingerState = exist_finger;
     }

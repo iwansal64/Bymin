@@ -1,5 +1,6 @@
 #pragma once
 #include <MAX30105.h>
+#include <display_manager.h>
 
 class TempSensorManager
 {
