@@ -6,10 +6,8 @@
 #include <dfplayer_manager.h>
 
 MAX30105 particleSensor;
-MAX30105 temperatureSensor;
 
 ParticleSensorManager particleSensorManager(&particleSensor);
-TempSensorManager tempSensorManager(&temperatureSensor);
 MqttManager mqttManager;
 DFPlayerManager dfplayerManager(30, RX, TX);
 
@@ -21,7 +19,6 @@ void setup()
 
     //? Setup Particle Sensor Manager
     particleSensorManager.setup();
-    tempSensorManager.setup();
 
     //? Setup MQTT Manager
     mqttManager.setup();
@@ -35,18 +32,19 @@ void loop()
 {
     //? Updating particle sensor data
     particleSensorManager.update_particlesensor();
-    float celcius = tempSensorManager.show_temp_celcius();
-    Serial.println(celcius);
 
     //? Check if the particle sensor is ready or not
-    float average_hr = particleSensorManager.show_average_hr();
-
-    if (average_hr > 0)
+    if (particleSensorManager.ready_hr_sensor())
     {
-        float celcius = tempSensorManager.show_temp_celcius();
-        if (celcius > 0 && celcius < 500)
+        float average_hr = particleSensorManager.show_average_hr();
+
+        if (average_hr > 0)
         {
-            mqttManager.send_data(average_hr, celcius);
+            float celcius = particleSensorManager.show_temperature();
+            if (celcius > 0 && celcius < 500)
+            {
+                mqttManager.send_data(average_hr, celcius);
+            }
         }
     }
 

@@ -17,7 +17,7 @@ private:
     byte indexBPM;
 
 public:
-HRSensorManager(MAX30105 *particleSensor);
+    HRSensorManager(MAX30105 *particleSensor);
 
     void set_duration(int new_duration);
 
@@ -84,11 +84,6 @@ float HRSensorManager::get_average_hr()
 float HRSensorManager::get_current_hr()
 {
     return this->currentHR;
-}
-
-bool HRSensorManager::exist_finger()
-{
-    return this->currentIr >= 50000;
 }
 
 bool HRSensorManager::ready_to_read()
