@@ -1,0 +1,26 @@
+{
+    "folders": [
+        {
+            "path": ".."
+        },
+        {
+            "name": "test_esp32",
+            "path": "../../../../../Documents/PlatformIO/Projects/test_esp32"
+        }
+    ],
+    "settings": {
+        "files.associations": {
+            "*.embeddedhtml": "html",
+            "*.cs": "csharp",
+            "*.html": "html",
+            "array": "cpp",
+            "deque": "cpp",
+            "string": "cpp",
+            "unordered_map": "cpp",
+            "unordered_set": "cpp",
+            "vector": "cpp",
+            "string_view": "cpp",
+            "initializer_list": "cpp"
+        }
+    }
+}
