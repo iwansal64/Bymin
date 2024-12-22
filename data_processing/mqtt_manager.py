@@ -23,4 +23,4 @@ def connect(on_connect: Callable[[paho.mqtt.client.Client, any, paho.mqtt.client
         
     print("CONNECTED")
     mqttc.loop_forever()
-    
+     
