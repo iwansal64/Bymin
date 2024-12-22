@@ -4,11 +4,11 @@
 #include <PubSubClient.h>
 #include <display_manager.h>
 
-#define TOPIC "/nodeee3/data1"
-#define SSID "Iwann"
-#define PASSWORD "1235813213455"
+#define TOPIC "/nodeee1/data1"
+#define SSID "fh_a5a180"
+#define PASSWORD "24G_is_the_best"
 #define MQTT_SERVER_URI "0.tcp.ap.ngrok.io"
-#define MQTT_SERVER_PORT 18671
+#define MQTT_SERVER_PORT 11380
 
 #define MAX_RECURSIVE 10
 
@@ -37,7 +37,7 @@ MqttManager::MqttManager() : mqtt_display_manager()
 void MqttManager::setup()
 {
     client = PubSubClient(this->wifiClient);
-    // Serial.println("Setting up server");
+    Serial.println("Setting up server");
     client.setServer(MQTT_SERVER_URI, MQTT_SERVER_PORT);
 
     Serial.println();
@@ -105,9 +105,9 @@ void MqttManager::reconnect()
         else
         {
             this->mqtt_display_manager.show_ensureconnection_state(0, MQTT_SERVER_URI, MQTT_SERVER_PORT, this->client.state());
-            Serial.print("failed, state = ");
-            Serial.print(this->client.state());
-            Serial.println(" try again in 5 seconds");
+            // Serial.print("failed, state = ");
+            // Serial.print(this->client.state());
+            // Serial.println(" try again in 5 seconds");
             // Wait 5 seconds before retrying
             delay(5000);
         }

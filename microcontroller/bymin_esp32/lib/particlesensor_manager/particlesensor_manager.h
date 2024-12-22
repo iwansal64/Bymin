@@ -39,7 +39,7 @@ ParticleSensorManager::ParticleSensorManager(MAX30105 *particleSensor) : hrsenso
 void ParticleSensorManager::setup()
 {
 
-    // Serial.println("SETUP");
+    Serial.println("SETUP PARTICLE SENSOR");
     if (!this->particleSensor->begin(Wire, I2C_SPEED_FAST))
     {
         Serial.println("ERROR WHEN BEGINNING PARTICLE SENSOR");

@@ -27,9 +27,9 @@ void TempSensorManager::setup()
 float TempSensorManager::get_temp_celcius()
 {
     float celcius = round(this->particleSensor->readTemperature() * 10) / 10;
-    Serial.print("Temperature: ");
-    Serial.print(round(celcius));
-    Serial.println("°C");
+    // Serial.print("Temperature: ");
+    // Serial.print(round(celcius));
+    // Serial.println("°C");
     return celcius;
 }
 

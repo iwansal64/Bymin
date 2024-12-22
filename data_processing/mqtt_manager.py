@@ -2,7 +2,7 @@ import models, paho.mqtt.client as mqtt, paho
 from typing import Callable
 
 MQTT_SERVER_URI = "0.tcp.ap.ngrok.io"
-MQTT_SERVER_PORT = 18671
+MQTT_SERVER_PORT = 11380
 MQTT_SERVER_TOPICS = ["/nodeee3/data1"]
 
 def get_health_data() -> models.HealthData:

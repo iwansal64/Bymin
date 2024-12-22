@@ -10,7 +10,7 @@ MAX30105 particleSensor;
 
 ParticleSensorManager particleSensorManager(&particleSensor);
 MqttManager mqttManager;
-DFPlayerManager dfplayerManager(30, RX, TX);
+DFPlayerManager dfplayerManager(30, &Serial2);
 
 bool cur;
 
@@ -29,7 +29,7 @@ void setup()
     mqttManager.connect();
 
     //? Setup DFPlayer
-    // dfplayerManager.setup();
+    dfplayerManager.setup();
 }
 
 void loop()
@@ -48,16 +48,13 @@ void loop()
             if (celcius > 0 && celcius < 500)
             {
                 Serial.println("Avg HR : " + String(average_hr) + "BPM. Temperature : " + String(celcius) + " °C");
+                dfplayerManager.play_sound(1);
                 mqttManager.send_data(average_hr, celcius);
             }
         }
     }
 
-    if (particleSensorManager.exist_finger() != cur)
-    {
-        cur = !cur;
-        Serial.println(cur ? "FINGER" : "FINGTOD");
-    }
+    particleSensorManager.show_finger_state();
 
     mqttManager.ensure_connection();
 }
